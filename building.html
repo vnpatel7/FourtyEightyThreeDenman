@@ -34,9 +34,9 @@
     <!-- Architecture Description + Image Layout -->
     <div class="two-col">
 
-        <!-- Left: Building Image -->
+        <!-- Left: Building Video Rendering -->
         <div class="col-img">
-            <img src="building.jpg" alt="Forty Eighty Three Denman Tower Rendering">
+            <video src="building.mp4" autoplay muted loop playsinline style="width:100%; display:block;" title="Forty Eighty Three Denman Tower Rendering"></video>
         </div>
 
         <!-- Right: Description Text -->
@@ -77,11 +77,11 @@
 <!-- Footer -->
 <div class="footer">
     &copy; 2025 BPR Properties &mdash; A Patel Holdings Company &nbsp;|&nbsp;
-    <a href="mailto:info@4083denman.com" style="color:#c9a84c;">info@4083denman.com</a>
+    <a href="/cdn-cgi/l/email-protection#80e9eee6efc0b4b0b8b3e4e5eeede1eeaee3efed" style="color:#c9a84c;"><span class="__cf_email__" data-cfemail="eb82858d84abdfdbd3d88f8e85868a85c5888486">[email&#160;protected]</span></a>
 </div>
 
 <!-- JavaScript -->
-<script type="text/javascript">
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
 
     // Array of amenity objects with name and category
     // Satisfies: array requirement
@@ -118,17 +118,4 @@
         }
 
         result = result + "</ul>";
-        document.getElementById("amenitiesOutput").innerHTML = result;
-    }
-
-    // Auto-load all amenities when page opens - browser load event
-    // Satisfies: browser event (window onload)
-    window.onload = function() 
-    {
-        filterAmenities();
-    };
-
-</script>
-
-</body>
-</html>
+        document.getElementById("amenitiesOutput").
