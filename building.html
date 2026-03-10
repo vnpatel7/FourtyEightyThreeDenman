@@ -7,14 +7,6 @@
 
     <!-- Linked to external CSS file -->
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* Let video render at its full natural height - no cropping */
-        .col-img video {
-            width: 100%;
-            display: block;
-        }
-    </style>
 </head>
 
 <body>
@@ -36,38 +28,31 @@
     <h2>The Building</h2>
 </div>
 
-<!-- Main Content -->
-<div class="container">
+<!-- Section 1: Full Width Video -->
+<div style="width:85%; margin:40px auto; text-align:center;">
+    <video src="building.mp4" autoplay muted loop playsinline style="width:100%; display:block;" title="Forty Eighty Three Denman Tower Rendering"></video>
+</div>
 
-    <!-- Architecture Description + Video Layout -->
-    <div class="two-col">
+<!-- Section 2: Architectural Description -->
+<div style="width:85%; margin:0 auto 40px auto; text-align:center; line-height:1.9; font-size:15px; color:#333333;">
+    <h3 style="color:#c9a84c; letter-spacing:3px; text-transform:uppercase;">Architectural Vision</h3>
+    <p>
+        Forty Eighty Three Denman is conceived as a slender, sculptural tower whose glass
+        facade reflects the ever-changing light of the New York sky. Every design decision —
+        from the fluted exterior panels to the soaring double-height lobby — was made in
+        service of one idea: that luxury is not a feature, but a feeling.
+    </p>
+    <p>
+        Developed by BPR Properties, a division of Patel Holdings, the building draws
+        on decades of multi-family development expertise. The result is a residence that
+        offers both architectural distinction and the comfort of world-class management.
+    </p>
+</div>
 
-        <!-- Left: Building Video Rendering -->
-        <div class="col-img">
-            <video src="building.mp4" autoplay muted loop playsinline title="Forty Eighty Three Denman Tower Rendering"></video>
-        </div>
+<!-- Section 3: Amenities Filter -->
+<!-- Satisfies: user input from selection, array, conditional, loop, dynamic text, browser event -->
+<div style="width:85%; margin:0 auto 60px auto;">
 
-        <!-- Right: Description Text -->
-        <div class="col-text">
-            <h3>Architectural Vision</h3>
-            <p>
-                Forty Eighty Three Denman is conceived as a slender, sculptural tower whose glass
-                facade reflects the ever-changing light of the New York sky. Every design decision —
-                from the fluted exterior panels to the soaring double-height lobby — was made in
-                service of one idea: that luxury is not a feature, but a feeling.
-            </p>
-            <p>
-                Developed by BPR Properties, a division of Patel Holdings, the building draws
-                on decades of multi-family development expertise. The result is a residence that
-                offers both architectural distinction and the comfort of world-class management.
-            </p>
-        </div>
-
-    </div>
-
-    <!-- Amenities Filter Section -->
-    <!-- Dropdown filters amenities by category -->
-    <!-- Satisfies: user input from selection, array, conditional, loop, dynamic text -->
     <div class="filter-row">
         <label for="amenityFilter">Filter Amenities by Category:</label>
         <select id="amenityFilter" onchange="filterAmenities()">
@@ -78,7 +63,6 @@
         </select>
     </div>
 
-    <!-- Amenities list output -->
     <div id="amenitiesOutput"></div>
 
 </div>
