@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forty Eighty Three Denman - Residences</title>
+
+    <!-- Linked to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <span class="logo">4083 Denman</span>
+    <div>
+        <a href="index.html" title="Home">Home</a>
+        <a href="building.html" title="The Building">The Building</a>
+        <a href="residences.html" title="Residences">Residences</a>
+        <a href="location.html" title="Location">Location</a>
+        <a href="inquire.html" title="Inquire">Inquire</a>
+    </div>
+</div>
+
+<!-- Page Title Banner -->
+<div class="page-title">
+    <h2>Residences</h2>
+</div>
+
+<!-- Intro -->
+<div class="intro-block" style="margin-top:30px;">
+    <p>
+        Forty Eighty Three Denman offers a curated collection of one- to four-bedroom residences,
+        each finished to the highest standard of craftsmanship. Select a residence type below to learn more.
+    </p>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+
+    <!-- Residence Cards Grid -->
+    <!-- Cards are dynamically rendered from a JS array using a loop -->
+    <!-- Satisfies: array, loop, dynamic text placement -->
+    <div id="residencesGrid"></div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    &copy; 2025 BPR Properties &mdash; A Patel Holdings Company &nbsp;|&nbsp;
+    <a href="mailto:info@4083denman.com" style="color:#c9a84c;">info@4083denman.com</a>
+</div>
+
+<!-- JavaScript -->
+<script type="text/javascript">
+
+    // Array of residence objects - each has type, sqft, floor range, and image
+    // Satisfies: array requirement
+    var residences = [
+        {
+            type: "One Bedroom",
+            sqft: "800 - 1,050 sq ft",
+            floors: "Floors 10 - 25",
+            image: "unit1.jpg",
+            desc: "Sleek and light-filled, ideal for the urban professional."
+        },
+        {
+            type: "Two Bedroom",
+            sqft: "1,200 - 1,600 sq ft",
+            floors: "Floors 26 - 40",
+            image: "unit2.jpg",
+            desc: "Open-plan living with sweeping city views."
+        },
+        {
+            type: "Three Bedroom",
+            sqft: "2,000 - 2,800 sq ft",
+            floors: "Floors 41 - 55",
+            image: "unit3.jpg",
+            desc: "Spacious residences with private foyers and full dining rooms."
+        },
+        {
+            type: "Four Bedroom",
+            sqft: "3,200 - 4,200 sq ft",
+            floors: "Floors 56 - 60",
+            image: "unit4.jpg",
+            desc: "Full-floor residences with panoramic Manhattan views."
+        },
+        {
+            type: "Penthouse",
+            sqft: "5,800 sq ft",
+            floors: "Floors 61 - 62",
+            image: "penthouse.jpg",
+            desc: "The crown of 4083 Denman. A singular residence above the city."
+        }
+    ];
+
+    // Loop through the array and build each unit card dynamically
+    // Satisfies: loop, dynamically placed text on page
+    function renderResidences() 
+    {
+        var grid = document.getElementById("residencesGrid");
+        var html = "";
+        var i = 0;
+
+        while (i < residences.length) 
+        {
+            html = html + 
+                "<div class='unit-card'>" +
+                    "<img src='" + residences[i].image + "' alt='" + residences[i].type + " floor plan'>" +
+                    "<h3>" + residences[i].type + "</h3>" +
+                    "<p>" + residences[i].sqft + "</p>" +
+                    "<p>" + residences[i].floors + "</p>" +
+                    "<p style='padding:0 12px; font-size:11px;'>" + residences[i].desc + "</p>" +
+                "</div>";
+            i = i + 1;
+        }
+
+        grid.innerHTML = html;
+    }
+
+    // Render cards when the page loads - browser load event
+    // Satisfies: browser event (window onload)
+    window.onload = function() 
+    {
+        renderResidences();
+    };
+
+</script>
+
+</body>
+</html>
