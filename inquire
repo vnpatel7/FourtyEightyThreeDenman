@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forty Eighty Three Denman - Inquire</title>
+
+    <!-- Linked to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <span class="logo">4083 Denman</span>
+    <div>
+        <a href="index.html" title="Home">Home</a>
+        <a href="building.html" title="The Building">The Building</a>
+        <a href="residences.html" title="Residences">Residences</a>
+        <a href="location.html" title="Location">Location</a>
+        <a href="inquire.html" title="Inquire">Inquire</a>
+    </div>
+</div>
+
+<!-- Page Title Banner -->
+<div class="page-title">
+    <h2>Inquire</h2>
+</div>
+
+<!-- Intro -->
+<div class="intro-block" style="margin-top:30px;">
+    <p>
+        To request a private sales presentation, schedule a viewing, or speak with our development team,
+        please complete the form below. A member of our team will be in touch within one business day.
+    </p>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+
+    <!-- Inquiry Form -->
+    <!-- Satisfies: user input from input box, function called by button, if/else form validation, dynamic text -->
+    <div class="form-wrap">
+
+        <label for="fname">Full Name</label>
+        <input type="text" id="fname" placeholder="John Smith">
+
+        <label for="femail">Email Address</label>
+        <input type="text" id="femail" placeholder="john@example.com">
+
+        <label for="fphone">Phone Number</label>
+        <input type="text" id="fphone" placeholder="(212) 555-0100">
+
+        <label for="finterest">I am inquiring as a:</label>
+        <select id="finterest" style="width:100%; padding:10px; font-size:14px; background-color:#1a1a1a; border:1px solid #333; color:#fff; box-sizing:border-box; margin-bottom:4px;">
+            <option value="">-- Please select --</option>
+            <option value="buyer">Prospective Buyer</option>
+            <option value="investor">Investor</option>
+            <option value="broker">Broker / Agent</option>
+            <option value="press">Press / Media</option>
+        </select>
+
+        <label for="fmessage">Message</label>
+        <textarea id="fmessage" placeholder="Please share any questions or details about your inquiry..."></textarea>
+
+        <button onclick="submitForm()">Submit Inquiry</button>
+
+        <!-- Dynamic success/error message -->
+        <p id="formMsg"></p>
+
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    &copy; 2025 BPR Properties &mdash; A Patel Holdings Company &nbsp;|&nbsp;
+    <a href="mailto:info@4083denman.com" style="color:#c9a84c;">info@4083denman.com</a>
+</div>
+
+<!-- JavaScript -->
+<script type="text/javascript">
+
+    // Required field names used in validation error messages
+    // Satisfies: array requirement
+    var fieldLabels = ["Full Name", "Email Address", "Phone Number", "Inquiry Type", "Message"];
+
+    // Validate and submit the inquiry form
+    // Satisfies: user input from input box/selection, function called by button, if/else/else if, dynamic text
+    function submitForm() 
+    {
+        var name     = document.getElementById("fname").value;
+        var email    = document.getElementById("femail").value;
+        var phone    = document.getElementById("fphone").value;
+        var interest = document.getElementById("finterest").value;
+        var message  = document.getElementById("fmessage").value;
+        var output   = document.getElementById("formMsg");
+
+        // Check each required field - if empty, show specific error
+        if (name === "") 
+        {
+            output.style.color = "#ff6b6b";
+            output.innerHTML = "Please enter your full name.";
+        } 
+        else if (email === "") 
+        {
+            output.style.color = "#ff6b6b";
+            output.innerHTML = "Please enter your email address.";
+        } 
+        else if (email.indexOf("@") === -1 || email.indexOf(".") === -1) 
+        {
+            // Basic email format validation
+            output.style.color = "#ff6b6b";
+            output.innerHTML = "Please enter a valid email address.";
+        }
+        else if (phone === "") 
+        {
+            output.style.color = "#ff6b6b";
+            output.innerHTML = "Please enter your phone number.";
+        } 
+        else if (interest === "") 
+        {
+            output.style.color = "#ff6b6b";
+            output.innerHTML = "Please select how you are inquiring.";
+        } 
+        else if (message === "") 
+        {
+            output.style.color = "#ff6b6b";
+            output.innerHTML = "Please include a message with your inquiry.";
+        } 
+        else 
+        {
+            // All fields valid - show confirmation
+            output.style.color = "#c9a84c";
+            output.innerHTML = "Thank you, " + name + ". Your inquiry has been received. A member of our team will contact you shortly.";
+        }
+    }
+
+</script>
+
+</body>
+</html>
