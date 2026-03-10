@@ -7,6 +7,16 @@
 
     <!-- Linked to external CSS file -->
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Cap video height so amenities section stays visible below */
+        .col-img video {
+            width: 100%;
+            max-height: 340px;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,12 +41,12 @@
 <!-- Main Content -->
 <div class="container">
 
-    <!-- Architecture Description + Image Layout -->
+    <!-- Architecture Description + Video Layout -->
     <div class="two-col">
 
         <!-- Left: Building Video Rendering -->
         <div class="col-img">
-            <video src="building.mp4" autoplay muted loop playsinline style="width:100%; max-height:360px; object-fit:cover; display:block;" title="Forty Eighty Three Denman Tower Rendering"></video>
+            <video src="building.mp4" autoplay muted loop playsinline title="Forty Eighty Three Denman Tower Rendering"></video>
         </div>
 
         <!-- Right: Description Text -->
@@ -58,7 +68,8 @@
     </div>
 
     <!-- Amenities Filter Section -->
-    <!-- Dropdown lets user filter amenities by category - satisfies: user input from selection, array, conditional, dynamic text -->
+    <!-- Dropdown filters amenities by category -->
+    <!-- Satisfies: user input from selection, array, conditional, loop, dynamic text -->
     <div class="filter-row">
         <label for="amenityFilter">Filter Amenities by Category:</label>
         <select id="amenityFilter" onchange="filterAmenities()">
@@ -69,7 +80,7 @@
         </select>
     </div>
 
-    <!-- Output for filtered amenities list -->
+    <!-- Amenities list output -->
     <div id="amenitiesOutput"></div>
 
 </div>
@@ -77,11 +88,11 @@
 <!-- Footer -->
 <div class="footer">
     &copy; 2025 BPR Properties &mdash; A Patel Holdings Company &nbsp;|&nbsp;
-    <a href="/cdn-cgi/l/email-protection#80e9eee6efc0b4b0b8b3e4e5eeede1eeaee3efed" style="color:#c9a84c;"><span class="__cf_email__" data-cfemail="eb82858d84abdfdbd3d88f8e85868a85c5888486">[email&#160;protected]</span></a>
+    <a href="mailto:info@4083denman.com" style="color:#c9a84c;">info@4083denman.com</a>
 </div>
 
 <!-- JavaScript -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+<script type="text/javascript">
 
     // Array of amenity objects with name and category
     // Satisfies: array requirement
@@ -99,18 +110,17 @@
         { name: "Housekeeping on Request", category: "services" }
     ];
 
-    // Filter amenities based on dropdown selection
-    // Satisfies: user input from selection, conditional if/else, loop, dynamic text
-    function filterAmenities() 
+    // Filter and display amenities based on dropdown selection
+    // Satisfies: user input from selection, if/else conditional, while loop, dynamic text
+    function filterAmenities()
     {
         var selected = document.getElementById("amenityFilter").value;
         var result = "<ul style='list-style:none; padding:0; text-align:center;'>";
         var i = 0;
 
-        while (i < amenities.length) 
+        while (i < amenities.length)
         {
-            // Conditional: show all or only matching category
-            if (selected === "all" || amenities[i].category === selected) 
+            if (selected === "all" || amenities[i].category === selected)
             {
                 result = result + "<li style='padding:8px 0; border-bottom:1px solid #ddd; font-size:14px; letter-spacing:1px;'>" + amenities[i].name + "</li>";
             }
@@ -118,4 +128,17 @@
         }
 
         result = result + "</ul>";
-        document.getElementById("amenitiesOutput").
+        document.getElementById("amenitiesOutput").innerHTML = result;
+    }
+
+    // Auto-load all amenities when page opens
+    // Satisfies: browser event (window.onload)
+    window.onload = function()
+    {
+        filterAmenities();
+    };
+
+</script>
+
+</body>
+</html>
