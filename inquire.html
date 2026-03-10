@@ -40,7 +40,6 @@
 <div class="container">
 
     <!-- Inquiry Form -->
-    <!-- Satisfies: user input from input box, function called by button, if/else form validation, dynamic text -->
     <div class="form-wrap">
 
         <label for="fname">Full Name</label>
@@ -83,11 +82,9 @@
 <script type="text/javascript">
 
     // Required field names used in validation error messages
-    // Satisfies: array requirement
     var fieldLabels = ["Full Name", "Email Address", "Phone Number", "Inquiry Type", "Message"];
 
     // Validate and submit the inquiry form
-    // Satisfies: user input from input box/selection, function called by button, if/else/else if, dynamic text
     function submitForm() 
     {
         var name     = document.getElementById("fname").value;
