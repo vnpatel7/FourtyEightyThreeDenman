@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forty Eighty Three Denman</title>
+
+    <!-- Linked to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <span class="logo">4083 Denman</span>
+    <div>
+        <a href="index.html" title="Home">Home</a>
+        <a href="building.html" title="The Building">The Building</a>
+        <a href="residences.html" title="Residences">Residences</a>
+        <a href="location.html" title="Location">Location</a>
+        <a href="inquire.html" title="Inquire">Inquire</a>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<div class="hero">
+    <div class="hero-text">
+        <h1>Forty Eighty Three Denman</h1>
+        <p>A New Standard of Luxury Living in New York City</p>
+    </div>
+</div>
+
+<!-- Callout Stat Boxes -->
+<div class="callout-row">
+    <div class="callout-box">
+        <h3>62</h3>
+        <p>Stories</p>
+    </div>
+    <div class="callout-box">
+        <h3>NYC</h3>
+        <p>New York City, NY</p>
+    </div>
+    <div class="callout-box">
+        <h3>180°</h3>
+        <p>Rooftop Sky Lounge</p>
+    </div>
+</div>
+
+<!-- Intro Text -->
+<div class="intro-block">
+    <p>
+        Developed by BPR Properties, a division of Patel Holdings, Forty Eighty Three Denman rises 62 stories
+        above New York City as a landmark in luxury residential living. Designed for discerning buyers who expect
+        nothing short of exceptional, the tower offers residences of unmatched craftsmanship, bespoke amenities,
+        and commanding views of the Manhattan skyline.
+    </p>
+</div>
+
+<!-- Animated Stat Counter (Extra Feature) -->
+<!-- This button triggers a loop that counts up and displays building stats one by one -->
+<div class="stat-counter-row">
+    <button onclick="runCounter()">Explore Building Highlights</button>
+    <p id="counterOutput"></p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    &copy; 2025 BPR Properties &mdash; A Patel Holdings Company &nbsp;|&nbsp;
+    <a href="mailto:info@4083denman.com" style="color:#c9a84c;">info@4083denman.com</a>
+</div>
+
+<!-- JavaScript -->
+<script type="text/javascript">
+
+    // Array of building highlights shown one by one via counter loop
+    // This satisfies: array, loop, dynamic text, browser event (button click)
+    function runCounter() 
+    {
+        var highlights = [
+            "62 Stories of Iconic Architecture",
+            "Residences from 800 to 4,200 sq ft",
+            "24/7 Concierge &amp; White Glove Service",
+            "Rooftop Sky Lounge with 180&deg; Views",
+            "Private Fitness Center &amp; Spa",
+            "Steps from Central Park"
+        ];
+
+        var output = document.getElementById("counterOutput");
+        output.innerHTML = "";
+
+        var i = 0;
+
+        // Loop through highlights array and display each item with a delay
+        // Extra feature: uses setInterval to simulate an animated reveal
+        var timer = setInterval(function() 
+        {
+            if (i < highlights.length) 
+            {
+                output.innerHTML = output.innerHTML + "&#10003; " + highlights[i] + "<br>";
+                i = i + 1;
+            } 
+            else 
+            {
+                clearInterval(timer);
+            }
+        }, 500);
+    }
+
+</script>
+
+</body>
+</html>
