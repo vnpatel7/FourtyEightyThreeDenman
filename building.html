@@ -58,7 +58,6 @@
     </div>
 
     <!-- Row 2: Amenities Filter below the side by side -->
-    <!-- Satisfies: user input from selection, array, conditional, loop, dynamic text, browser event -->
     <div class="filter-row">
         <label for="amenityFilter">Filter Amenities by Category:</label>
         <select id="amenityFilter" onchange="filterAmenities()">
@@ -83,7 +82,6 @@
 <script type="text/javascript">
 
     // Array of amenity objects with name and category
-    // Satisfies: array requirement
     var amenities = [
         { name: "Private Fitness Center", category: "wellness" },
         { name: "Full-Service Spa & Steam Room", category: "wellness" },
@@ -99,7 +97,6 @@
     ];
 
     // Filter and display amenities based on dropdown selection
-    // Satisfies: user input from selection, if/else conditional, while loop, dynamic text
     function filterAmenities()
     {
         var selected = document.getElementById("amenityFilter").value;
@@ -120,7 +117,6 @@
     }
 
     // Auto-load all amenities when page opens
-    // Satisfies: browser event (window.onload)
     window.onload = function()
     {
         filterAmenities();
