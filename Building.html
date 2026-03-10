@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forty Eighty Three Denman - The Building</title>
+
+    <!-- Linked to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <span class="logo">4083 Denman</span>
+    <div>
+        <a href="index.html" title="Home">Home</a>
+        <a href="building.html" title="The Building">The Building</a>
+        <a href="residences.html" title="Residences">Residences</a>
+        <a href="location.html" title="Location">Location</a>
+        <a href="inquire.html" title="Inquire">Inquire</a>
+    </div>
+</div>
+
+<!-- Page Title Banner -->
+<div class="page-title">
+    <h2>The Building</h2>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+
+    <!-- Architecture Description + Image Layout -->
+    <div class="two-col">
+
+        <!-- Left: Building Image -->
+        <div class="col-img">
+            <img src="building.jpg" alt="Forty Eighty Three Denman Tower Rendering">
+        </div>
+
+        <!-- Right: Description Text -->
+        <div class="col-text">
+            <h3>Architectural Vision</h3>
+            <p>
+                Forty Eighty Three Denman is conceived as a slender, sculptural tower whose glass
+                facade reflects the ever-changing light of the New York sky. Every design decision —
+                from the fluted exterior panels to the soaring double-height lobby — was made in
+                service of one idea: that luxury is not a feature, but a feeling.
+            </p>
+            <p>
+                Developed by BPR Properties, a division of Patel Holdings, the building draws
+                on decades of multi-family development expertise. The result is a residence that
+                offers both architectural distinction and the comfort of world-class management.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Amenities Filter Section -->
+    <!-- Dropdown lets user filter amenities by category - satisfies: user input from selection, array, conditional, dynamic text -->
+    <div class="filter-row">
+        <label for="amenityFilter">Filter Amenities by Category:</label>
+        <select id="amenityFilter" onchange="filterAmenities()">
+            <option value="all">All Amenities</option>
+            <option value="wellness">Wellness</option>
+            <option value="social">Social</option>
+            <option value="services">Services</option>
+        </select>
+    </div>
+
+    <!-- Output for filtered amenities list -->
+    <div id="amenitiesOutput"></div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    &copy; 2025 BPR Properties &mdash; A Patel Holdings Company &nbsp;|&nbsp;
+    <a href="mailto:info@4083denman.com" style="color:#c9a84c;">info@4083denman.com</a>
+</div>
+
+<!-- JavaScript -->
+<script type="text/javascript">
+
+    // Array of amenity objects with name and category
+    // Satisfies: array requirement
+    var amenities = [
+        { name: "Private Fitness Center", category: "wellness" },
+        { name: "Full-Service Spa & Steam Room", category: "wellness" },
+        { name: "Yoga & Meditation Studio", category: "wellness" },
+        { name: "Rooftop Sky Lounge", category: "social" },
+        { name: "Private Dining Room", category: "social" },
+        { name: "Residents Lounge & Library", category: "social" },
+        { name: "Screening Room", category: "social" },
+        { name: "24/7 White Glove Concierge", category: "services" },
+        { name: "Valet Parking", category: "services" },
+        { name: "In-Residence Package Handling", category: "services" },
+        { name: "Housekeeping on Request", category: "services" }
+    ];
+
+    // Filter amenities based on dropdown selection
+    // Satisfies: user input from selection, conditional if/else, loop, dynamic text
+    function filterAmenities() 
+    {
+        var selected = document.getElementById("amenityFilter").value;
+        var result = "<ul style='list-style:none; padding:0; text-align:center;'>";
+        var i = 0;
+
+        while (i < amenities.length) 
+        {
+            // Conditional: show all or only matching category
+            if (selected === "all" || amenities[i].category === selected) 
+            {
+                result = result + "<li style='padding:8px 0; border-bottom:1px solid #ddd; font-size:14px; letter-spacing:1px;'>" + amenities[i].name + "</li>";
+            }
+            i = i + 1;
+        }
+
+        result = result + "</ul>";
+        document.getElementById("amenitiesOutput").innerHTML = result;
+    }
+
+    // Auto-load all amenities when page opens - browser load event
+    // Satisfies: browser event (window onload)
+    window.onload = function() 
+    {
+        filterAmenities();
+    };
+
+</script>
+
+</body>
+</html>
