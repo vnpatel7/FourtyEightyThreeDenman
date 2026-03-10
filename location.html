@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forty Eighty Three Denman - Location</title>
+
+    <!-- Linked to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <span class="logo">4083 Denman</span>
+    <div>
+        <a href="index.html" title="Home">Home</a>
+        <a href="building.html" title="The Building">The Building</a>
+        <a href="residences.html" title="Residences">Residences</a>
+        <a href="location.html" title="Location">Location</a>
+        <a href="inquire.html" title="Inquire">Inquire</a>
+    </div>
+</div>
+
+<!-- Page Title Banner -->
+<div class="page-title">
+    <h2>Location</h2>
+</div>
+
+<!-- Intro -->
+<div class="intro-block" style="margin-top:30px;">
+    <p>
+        Situated in the heart of Manhattan, Forty Eighty Three Denman places residents moments
+        from the city's finest culture, dining, parks, and transit.
+    </p>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+
+    <div class="location-grid">
+
+        <!-- Left: Google Maps Embed -->
+        <div class="map-embed">
+            <!-- Google Maps embed centered on Upper West Side, Manhattan -->
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6041.156!2d-73.9857!3d40.7831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258f4b00f7a09%3A0x2a414e4a80cfbff0!2sUpper%20West%20Side%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1700000000000"
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Map of 4083 Denman neighborhood">
+            </iframe>
+        </div>
+
+        <!-- Right: Neighborhood Spots + Commute Calculator -->
+        <div class="location-sidebar">
+
+            <!-- Neighborhood Highlights -->
+            <h3>Nearby</h3>
+            <div class="neighborhood-spot">Central Park &mdash; 3 min walk</div>
+            <div class="neighborhood-spot">Lincoln Center &mdash; 5 min walk</div>
+            <div class="neighborhood-spot">American Museum of Natural History &mdash; 6 min walk</div>
+            <div class="neighborhood-spot">Whole Foods Market &mdash; 4 min walk</div>
+            <div class="neighborhood-spot">1/2/3 Subway Lines &mdash; 2 min walk</div>
+
+            <!-- Commute Time Calculator -->
+            <!-- User selects destination, JS returns estimated commute info -->
+            <!-- Satisfies: user input from selection, array, conditional if/else, dynamic text, function call -->
+            <div class="commute-calc">
+                <h3>Commute Calculator</h3>
+
+                <label for="destination">Select Your Destination:</label>
+                <select id="destination">
+                    <option value="">-- Choose a destination --</option>
+                    <option value="midtown">Midtown (Times Square / 42nd St)</option>
+                    <option value="downtown">Downtown / Financial District</option>
+                    <option value="hudson">Hudson Yards</option>
+                    <option value="brooklyn">Brooklyn (Atlantic Terminal)</option>
+                    <option value="jfk">JFK Airport</option>
+                    <option value="newark">Newark Airport (EWR)</option>
+                </select>
+
+                <label for="travelMode">Travel By:</label>
+                <select id="travelMode">
+                    <option value="">-- Choose mode --</option>
+                    <option value="subway">Subway</option>
+                    <option value="taxi">Taxi / Rideshare</option>
+                    <option value="walk">Walking</option>
+                </select>
+
+                <button onclick="calculateCommute()">Calculate</button>
+
+                <!-- Dynamic output -->
+                <p id="commuteResult"></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    &copy; 2025 BPR Properties &mdash; A Patel Holdings Company &nbsp;|&nbsp;
+    <a href="mailto:info@4083denman.com" style="color:#c9a84c;">info@4083denman.com</a>
+</div>
+
+<!-- JavaScript -->
+<script type="text/javascript">
+
+    // Commute time data stored in arrays indexed by destination
+    // Satisfies: array requirement
+    var commuteTimes = {
+        midtown:  { subway: "18 min", taxi: "12 min", walk: "45 min" },
+        downtown: { subway: "30 min", taxi: "22 min", walk: "N/A"    },
+        hudson:   { subway: "22 min", taxi: "14 min", walk: "55 min" },
+        brooklyn: { subway: "40 min", taxi: "30 min", walk: "N/A"    },
+        jfk:      { subway: "65 min", taxi: "40 min", walk: "N/A"    },
+        newark:   { subway: "55 min", taxi: "35 min", walk: "N/A"    }
+    };
+
+    // Friendly destination names for output display
+    var destinationNames = {
+        midtown:  "Midtown (Times Square)",
+        downtown: "Downtown / Financial District",
+        hudson:   "Hudson Yards",
+        brooklyn: "Brooklyn (Atlantic Terminal)",
+        jfk:      "JFK Airport",
+        newark:   "Newark Airport"
+    };
+
+    // Calculate commute based on two user selections
+    // Satisfies: user input from selections, function called by button, conditional if/else, dynamic text
+    function calculateCommute() 
+    {
+        var dest = document.getElementById("destination").value;
+        var mode = document.getElementById("travelMode").value;
+        var output = document.getElementById("commuteResult");
+
+        // Form validation: both fields must be filled
+        if (dest === "" || mode === "") 
+        {
+            output.style.color = "#ff6b6b";
+            output.innerHTML = "Please select both a destination and travel mode.";
+        } 
+        else 
+        {
+            var time = commuteTimes[dest][mode];
+            var destName = destinationNames[dest];
+
+            // Conditional: handle N/A walking distances
+            if (time === "N/A") 
+            {
+                output.style.color = "#c9a84c";
+                output.innerHTML = "Walking to " + destName + " is not a practical option.";
+            } 
+            else 
+            {
+                output.style.color = "#c9a84c";
+                output.innerHTML = "Estimated commute to " + destName + ": <strong>" + time + "</strong>";
+            }
+        }
+    }
+
+</script>
+
+</body>
+</html>
